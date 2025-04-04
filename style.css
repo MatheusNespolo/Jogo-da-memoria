@@ -43,17 +43,18 @@ body {
   }
   
   .game-board {
-    width: 40vw;
+    width: 30vw;
+    max-width: 300px;
     display: grid;
     justify-content: center;
-    gap: 6px;
+    gap: clamp(8px, 1vw, 16px);
     padding: 10px;
     margin-top: 10px;
     grid-auto-rows: 60px;
   }
 
   .tabuleiro-container {
-    height: calc(100vh - 120px); /* Ajusta de acordo com altura do header */
+    height: calc(100vh - 120px);
     display: flex;
     justify-content: center;
     align-items: center;
