@@ -11,15 +11,25 @@ html {
 }
 
 header {
-    background-color: #4781e9;
+  height: 100px;
+    background-color: #264d8f;
     text-align: center;
     color: #282c34;
+    box-shadow: #000000 5px 5px 10px;
 }
 
 header h1 {
     margin: 0;
     padding:0;
     color: #ffffff;
+}
+
+.menu {
+    justify-content: center;
+    align-items: center;
+    background-color: #264d8f;
+    color: #ffffff;
+    text-shadow: #000000 2px 2px 5px;
 }
 
 body {
@@ -43,6 +53,7 @@ body {
   }
   
   .game-board {
+    max-width: fit-content;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -52,13 +63,15 @@ body {
     grid-auto-rows: 60px;
     background-color: #F0F0F3;
     border-radius: 10px;
+    box-shadow: #000000 10px 10px 10px;
   }
 
   .tabuleiro-container {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 110px);
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
   } 
   
   .card {
