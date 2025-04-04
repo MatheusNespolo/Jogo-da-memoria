@@ -1,24 +1,39 @@
+.color1 {color: #000000;}
+.color2 {color: #0a1f40;}
+.color3 {color: #264d8f;}
+.color4 {color: #4781e9;}
+.color5 {color: #6ebaff;}
+
 html {
     color-scheme: dark;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: #4781e9;
+    text-align: center;
+    color: #282c34;
+}
+
+header h1 {
+    margin: 0;
+    padding: 10px 0;
+    color: #ffffff;
 }
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #282c34;
+    background-color: #0a1f40;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    display: block;
     align-items: center;
     justify-content: center;
     text-align: center;
     min-height: 100vh;
-    padding: 30px;
+    padding: 0;
     margin: 0;
     overflow: hidden;
-  }
-  
-  .menu {
-    margin-bottom: 10px;
   }
   
   select, button {
@@ -35,12 +50,20 @@ body {
     padding: 10px;
     margin-top: 10px;
     grid-auto-rows: 60px;
+    aspect-ratio: 1 / 1;
   }
+
+  .tabuleiro-container {
+    height: calc(100vh - 120px); /* Ajusta de acordo com altura do header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
   
   .card {
     width: 60px;
     height: 60px;
-    font-size: 32px;
+    font-size: clamp(16px, 2.5vw, 32px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,6 +72,7 @@ body {
     cursor: pointer;
     user-select: none;
     transition: transform 0.3s ease;
+    aspect-ratio: 1 / 1;
   }
   
   .card.flipped {

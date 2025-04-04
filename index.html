@@ -7,21 +7,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="menu">
-    <h1>Jogo da Memória 🧠</h1>
-
-    <label for="difficulty">Escolha a dificuldade:</label>
-    <select id="difficulty">
-        <option value="4">Fácil (4x4)</option>
-        <option value="6">Médio (6x6)</option>
-        <option value="8">Difícil (8x8)</option>
-      </select>
-      
-
-    <button id="startBtn">Iniciar Jogo</button>
-  </div>
-
-  <div class="game-board hidden" id="gameBoard"></div>
+  <header>
+    <div class="menu">
+      <h1>Jogo da Memória 🧠</h1>
+  
+      <label for="difficulty">Escolha a dificuldade:</label>
+      <select id="difficulty">
+          <option value="4">Fácil (4x4)</option>
+          <option value="6">Médio (6x6)</option>
+          <option value="8">Difícil (8x8)</option>
+        </select>
+        
+      <button id="startBtn">Iniciar Jogo</button>
+    </div>
+  </header>
+  <main class="tabuleiro-container">
+    <div class="game-board hidden" id="gameBoard"></div>
+  </main>
 
   <script src="script.js"></script>
 </body>
