@@ -18,7 +18,7 @@ header {
 
 header h1 {
     margin: 0;
-    padding: 10px 0;
+    padding:0;
     color: #ffffff;
 }
 
@@ -43,14 +43,15 @@ body {
   }
   
   .game-board {
-    width: 30vw;
-    max-width: 300px;
     display: grid;
     justify-content: center;
+    align-content: center;
     gap: clamp(8px, 1vw, 16px);
     padding: 10px;
     margin-top: 10px;
     grid-auto-rows: 60px;
+    background-color: #F0F0F3;
+    border-radius: 10px;
   }
 
   .tabuleiro-container {
