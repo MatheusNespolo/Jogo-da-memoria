@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
           carta.dataset.emoji = emoji;
           carta.dataset.index = index;
           carta.textContent = '';
-        // Acionamento da função de virar a carta
+
           carta.addEventListener('click', () => virarCarta(carta));
           gameBoard.appendChild(carta);
       });
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function virarCarta(carta) {
       if (bloqueado || carta.classList.contains('flipped')) return;
-
+    // Caso seja a primeira ou a segunda carta virada recebe o emoji como conteúdo de texto
       carta.textContent = carta.dataset.emoji;
       carta.classList.add('flipped');
 
@@ -83,14 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
           const segundaCarta = carta;
           tentativas++;
-
+        // Verifica se as duas cartas viradas tem o mesmo emoji
           if (primeiraCarta.dataset.emoji === segundaCarta.dataset.emoji) {
               acertos++;
               primeiraCarta = null;
               verificarFimDeJogo();
           } else {
+        // Caso contrário, o tabuleiro fica bloqueado por um segundo e desvira cartas
               bloqueado = true;
               setTimeout(() => {
+                // Durante o tempo de bloqueio prepara a próxima comparação
                   primeiraCarta.textContent = '';
                   segundaCarta.textContent = '';
                   primeiraCarta.classList.remove('flipped');
