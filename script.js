@@ -118,13 +118,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formatarTempo(segundosTotais) {
-    const minutos = Math.floor(segundosTotais / 60);
+    const horas = Math.floor(segundosTotais / 3600);
+    const minutos = Math.floor((segundosTotais % 3600) / 60);
     const segundos = segundosTotais % 60;
+    if (segundosTotais < 60) {
+        return `${segundosTotais}s`;
+    } else if  (segundosTotais < 3600) {
+        const minFormatado = minutos > 0 ? `${minutos}m ` : '';
+        const segFormatado = `${segundos}s`;
 
-    const minFormatado = minutos > 0 ? `${minutos}m ` : '';
-    const segFormatado = `${segundos}s`;
+        return minFormatado + segFormatado;
+    } else {
+        const segundos = segundosTotais % 60;
 
-    return minFormatado + segFormatado;
+        return `${horas}h ${minutos}m ${segundos}s`;
+    }
 }
 
 function atualizarHUD() {
