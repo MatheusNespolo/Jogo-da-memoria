@@ -123,14 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const segundos = segundosTotais % 60;
     if (segundosTotais < 60) {
         return `${segundosTotais}s`;
-    } else if  (segundosTotais < 3600) {
-        const minFormatado = minutos > 0 ? `${minutos}m ` : '';
-        const segFormatado = `${segundos}s`;
+    }
 
+    if  (segundosTotais < 3600) {
         return minFormatado + segFormatado;
-    } else {
-        const segundos = segundosTotais % 60;
-
+    } 
+    {
         return `${horas}h ${minutos}m ${segundos}s`;
     }
 }
