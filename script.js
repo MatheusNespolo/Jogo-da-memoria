@@ -117,10 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   }
 
-  function formatarTempo(segundos) {
-    const minutos = Math.floor(segundos / 60);
-    const segundosRestantes = segundos % 60;
-    return minutos > 0 ? `${minutos}m ${segundosRestantes}s` : `${segundos}s`;
+  function formatarTempo(segundosTotais) {
+    const minutos = Math.floor(segundosTotais / 60);
+    const segundos = segundosTotais % 60;
+
+    const minFormatado = minutos > 0 ? `${minutos}m ` : '';
+    const segFormatado = `${segundos}s`;
+
+    return minFormatado + segFormatado;
 }
 
 function atualizarHUD() {
