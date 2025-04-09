@@ -1,3 +1,4 @@
+// Após carregamento da página divide emojis por categorias
 document.addEventListener('DOMContentLoaded', () => {
     const emojiCategorias = {
         animais: [
@@ -13,32 +14,33 @@ document.addEventListener('DOMContentLoaded', () => {
           '🪀', '📺', '📡', '💡', '🔋', '🔌', '📦', '💰', '📸', '🪞','🎀','💅'
         ],
       };
-      
+// Gera as arrays de emojis depois da função de início de jogo
   function gerarEmojiPool() {
       return [...emojiCategorias.animais, ...emojiCategorias.comidas, ...emojiCategorias.objetos];
   }
-
+// Buscando valores de elementos pelo seletor
   const startBtn = document.getElementById('startBtn');
   const difficultySelect = document.getElementById('difficulty');
   const gameBoard = document.getElementById('gameBoard');
-
+// Definicação de variáveis para auxílo da lógica
   let tamanhoGrade = 4;
   let primeiraCarta = null;
-  let bloqueado = false;
-  let tentativas = 0;
-  let acertos = 0;
+  let bloqueado = false; // Impede o usuário de virar mais de duas cartas
+  let tentativas = 0;    // Contador de tentativas
+  let acertos = 0;       // Contador de acertos
   let cronometro;
   let segundos = 0;
 
   startBtn.addEventListener('click', iniciarJogo);
 
   function iniciarJogo() {
+        // Passa a dificulade para o tamanho da grade
       tamanhoGrade = parseInt(difficultySelect.value);
       const totalCartas = tamanhoGrade * tamanhoGrade;
 
       let emojis = gerarEmojiPool();
       let emojisSelecionados = [];
-
+        // Enquanto houver cartas disponíveis, transfere 
       while (emojisSelecionados.length < totalCartas) {
           const emoji = emojis.splice(Math.floor(Math.random() * emojis.length), 1)[0];
           emojisSelecionados.push(emoji, emoji);
@@ -111,7 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
           clearInterval(cronometro);
           setTimeout(() => {
               const precisao = ((acertos / tentativas) * 100).toFixed(2);
-              alert(`🎉 Parabéns! Você venceu! 🎉\n⏳ Tempo: ${segundos} segundos\n🎯 Precisão: ${precisao}%`);
+              const tempoformatado = formatarTempo(segundos);
+              alert(`🎉 Parabéns! Você venceu! 🎉\n⏳ Tempo: ${tempoformatado} segundos\n🎯 Precisão: ${precisao}%`);
               gameBoard.classList.add('hidden');
           }, 500);
       }
@@ -122,18 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutos = Math.floor((segundosTotais % 3600) / 60);
     const segundos = segundosTotais % 60;
     if (segundosTotais < 60) {
-        return `${segundosTotais}s`;
+        return `${segundos}s`;
     }
 
     if  (segundosTotais < 3600) {
-        return minFormatado + segFormatado;
+        return `${minutos}m ${segundos}s`;
     } 
     {
         return `${horas}h ${minutos}m ${segundos}s`;
     }
 }
-
-function atualizarHUD() {
-    console.log(`Tempo: ${formatarTempo(segundos)} | Tentativas: ${tentativas} | Acertos: ${acertos}`);
-}
-});
+})
