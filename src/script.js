@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
       }
   }
-
+// Abaixo estão as funções auxiliares para placar, cronômetro e formatar o tempo
   function iniciarCronometro() {
       cronometro = setInterval(() => {
           segundos++;
