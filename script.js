@@ -40,24 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let emojis = gerarEmojiPool();
       let emojisSelecionados = [];
-        // Enquanto houver cartas disponíveis, transfere 
+        // Enquanto houver cartas disponíveis, transfere dois emojis para o array
       while (emojisSelecionados.length < totalCartas) {
           const emoji = emojis.splice(Math.floor(Math.random() * emojis.length), 1)[0];
           emojisSelecionados.push(emoji, emoji);
       }
-
+        // Embaralha os emojis selecionados
       emojisSelecionados.sort(() => Math.random() - 0.5);
 
       gameBoard.innerHTML = '';
-      gameBoard.classList.remove('hidden');
+      gameBoard.classList.remove('hidden'); // Remove a classe 'hidden' para mostrar o tabuleiro
+      // Faz com que o tabuleiro seja um grid que varia com a dificuldade
       gameBoard.style.gridTemplateColumns = `repeat(${tamanhoGrade}, 1fr)`;
-
+      // Reset de possíveis informações salvas
       tentativas = 0;
       acertos = 0;
       segundos = 0;
+      // Inicia o cronometro
       if (cronometro) clearInterval(cronometro); 
       iniciarCronometro();
-
+      // Cria as cartas, garantindo tenham um emoji
       emojisSelecionados.forEach((emoji, index) => {
           const carta = document.createElement('div');
           carta.classList.add('card');
