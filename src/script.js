@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
           carta.dataset.emoji = emoji;
           carta.dataset.index = index;
           carta.textContent = '';
-
+        // Acionamento da função de virar a carta
           carta.addEventListener('click', () => virarCarta(carta));
           gameBoard.appendChild(carta);
       });
