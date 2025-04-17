@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tentativas = 0;
       acertos = 0;
       segundos = 0;
-      // Inicia o cronometro
+      // Inicia o cronômetro
       if (cronometro) clearInterval(cronometro); 
       iniciarCronometro();
       // Cria as cartas correspondentes aos emojis selecionados pela dificuldade
