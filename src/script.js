@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return [...emojiCategorias.animais, ...emojiCategorias.comidas, ...emojiCategorias.objetos];
   }
 // Buscando valores de elementos pelo seletor
-  const startBtn = document.getElementById('startBtn');
-  const difficultySelect = document.getElementById('difficulty');
-  const gameBoard = document.getElementById('gameBoard');
+  const botaoInicio = document.getElementById('botaoInicio');
+  const dificuldade = document.getElementById('dificuldade');
+  const tabuleiro = document.getElementById('tabuleiro');
 // Definicação de variáveis para auxílo da lógica
   let tamanhoGrade = 4;
   let primeiraCarta = null;
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let cronometro;
   let segundos = 0;
 
-  startBtn.addEventListener('click', iniciarJogo);
+  botaoInicio.addEventListener('click', iniciarJogo);
 
   function iniciarJogo() {
-        // Passa a dificulade para o tamanho da grade
-      tamanhoGrade = parseInt(difficultySelect.value);
+        // Passa a dificuldade para o tamanho da grade
+      tamanhoGrade = parseInt(dificuldade.value);
       const totalCartas = tamanhoGrade * tamanhoGrade;
 
       let emojis = gerarEmojiPool();
@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Embaralha os emojis selecionados
       emojisSelecionados.sort(() => Math.random() - 0.5);
 
-      gameBoard.innerHTML = '';
-      gameBoard.classList.remove('hidden'); // Remove a classe 'hidden' para mostrar o tabuleiro
+      tabuleiro.innerHTML = '';
+      tabuleiro.classList.remove('hidden'); // Remove a classe 'hidden' para mostrar o tabuleiro
       // Faz com que o tabuleiro seja um grid que varia com a dificuldade
-      gameBoard.style.gridTemplateColumns = `repeat(${tamanhoGrade}, 1fr)`;
+      tabuleiro.style.gridTemplateColumns = `repeat(${tamanhoGrade}, 1fr)`;
       // Reset de possíveis informações salvas
       tentativas = 0;
       acertos = 0;
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
           carta.textContent = '';
 
           carta.addEventListener('click', () => virarCarta(carta));
-          gameBoard.appendChild(carta);
+          tabuleiro.appendChild(carta);
       });
   }
 
@@ -107,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function iniciarCronometro() {
       cronometro = setInterval(() => {
           segundos++;
-          atualizarHUD();
       }, 1000);
   }
 
@@ -119,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
               const precisao = ((acertos / tentativas) * 100).toFixed(2);
               const tempoformatado = formatarTempo(segundos);
               alert(`🎉 Parabéns! Você venceu! 🎉\n⏳ Tempo: ${tempoformatado} segundos\n🎯 Precisão: ${precisao}%`);
-              gameBoard.classList.add('hidden');
+              tabuleiro.classList.add('hidden');
           }, 500);
       }
   }
