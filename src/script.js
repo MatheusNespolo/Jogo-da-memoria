@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
       let emojis = gerarEmojiPool();
       let emojisSelecionados = [];
         // Enquanto houver cartas disponíveis, transfere pares de emojis para o array
-        // ALMA DO JOGO!!
       while (emojisSelecionados.length < totalCartas) {
           const emoji = emojis.splice(Math.floor(Math.random() * emojis.length), 1)[0];
           emojisSelecionados.push(emoji, emoji);
