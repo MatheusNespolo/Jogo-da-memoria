@@ -88,7 +88,7 @@ body {
     transition: transform 0.3s ease;
   }
   
-  .carta.flipped {
+  .carta.virada {
     background-color: #fefefe;
   }
   

@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let emojis = gerarEmojiPool();
       let emojisSelecionados = [];
-        // Enquanto houver cartas disponíveis, transfere dois emojis para o array
+        // Enquanto houver cartas disponíveis, transfere pares de emojis para o array
+        // ALMA DO JOGO!!
       while (emojisSelecionados.length < totalCartas) {
           const emoji = emojis.splice(Math.floor(Math.random() * emojis.length), 1)[0];
           emojisSelecionados.push(emoji, emoji);
@@ -59,10 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // Inicia o cronometro
       if (cronometro) clearInterval(cronometro); 
       iniciarCronometro();
-      // Cria as cartas, garantindo tenham um emoji
+      // Cria as cartas correspondentes aos emojis selecionados pela dificuldade
       emojisSelecionados.forEach((emoji, index) => {
           const carta = document.createElement('div');
-          carta.classList.add('card');
+          carta.classList.add('carta');
           carta.dataset.emoji = emoji;
           carta.dataset.index = index;
           carta.textContent = '';
@@ -73,10 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function virarCarta(carta) {
-      if (bloqueado || carta.classList.contains('flipped')) return;
+      if (bloqueado || carta.classList.contains('virada')) return;
     // Caso seja a primeira ou a segunda carta virada recebe o emoji como conteúdo de texto
       carta.textContent = carta.dataset.emoji;
-      carta.classList.add('flipped');
+      carta.classList.add('virada');
 
       if (!primeiraCarta) {
           primeiraCarta = carta;
@@ -95,8 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Durante o tempo de bloqueio prepara a próxima comparação
                   primeiraCarta.textContent = '';
                   segundaCarta.textContent = '';
-                  primeiraCarta.classList.remove('flipped');
-                  segundaCarta.classList.remove('flipped');
+                  primeiraCarta.classList.remove('virada');
+                  segundaCarta.classList.remove('virada');
                   primeiraCarta = null;
                   bloqueado = false;
               }, 1000);
