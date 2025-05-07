@@ -13,9 +13,9 @@ html {
 header {
   height: 100px;
     background-color: #264d8f;
-    text-align: center;
     color: #282c34;
     box-shadow: #000000 5px 5px 10px;
+    text-align: center;
 }
 
 header h1 {
